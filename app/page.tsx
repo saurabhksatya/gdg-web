@@ -1,7 +1,17 @@
 import Image from "next/image";
-
+import {
+  Bolt,
+  Star,
+  Favorite,
+  Snowflake,
+  Handshake,
+  Diversity3,
+  Public,
+  GroupAdd,
+} from "@material-symbols-svg/react/outlined";
 const logoAsset = "/assets/gdg-logo.svg";
 const markAsset = "/assets/gdg-mark.svg";
+const rocketAsset = "/assets/rocket.svg";
 
 const navItems = ["About", "Team", "Departments", "Events"];
 
@@ -13,28 +23,28 @@ const heroStats = [
 ] as const;
 
 const marqueeItems = [
-  { label: "BUILD", icon: "/assets/icon-vector-1.svg", color: "#8ab4f8" },
-  { label: "SHIP", icon: "/assets/icon-vector-7.svg", color: "#ff7a6b" },
-  { label: "LEARN", icon: "/assets/icon-vector-6.svg", color: "#ffd45e" },
-  { label: "HACK", icon: "/assets/icon-vector-5.svg", color: "#6ee7a0" },
-  { label: "REPEAT", icon: "/assets/icon-vector-1.svg", color: "#8ab4f8" },
+  { label: "BUILD", icon: Bolt, color: "#8ab4f8" },
+  { label: "SHIP", icon: Star, color: "#ff7a6b" },
+  { label: "LEARN", icon: Favorite, color: "#ffd45e" },
+  { label: "HACK", icon: Snowflake, color: "#6ee7a0" },
+  { label: "REPEAT", icon: Bolt, color: "#8ab4f8" },
 ];
 
 const aboutPrinciples = [
   {
-    icon: "/assets/icon-vector-2.svg",
+    icon: Handshake,
     title: "learn by doing",
     description: "every session ends with something you actually built.",
     color: "#8ab4f8",
   },
   {
-    icon: "/assets/icon-vector-3.svg",
+    icon: Diversity3,
     title: "beginner friendly",
     description: "peers and mentors who still remember day one.",
     color: "#ff7a6b",
   },
   {
-    icon: "/assets/icon-vector-4.svg",
+    icon: Public,
     title: "globally connected",
     description: "part of GDG on Campus chapters worldwide.",
     color: "#6ee7a0",
@@ -199,7 +209,7 @@ function SectionLabel({
   tone = "yellow",
 }: {
   children: string;
-  tone?: "yellow" | "green";
+  tone?: "yellow" | "green" | "red";
 }) {
   return <p className={`section-label section-label-${tone}`}>{children}</p>;
 }
@@ -234,12 +244,7 @@ function Marquee() {
             {marqueeItems.map((item) => (
               <span className="marquee-item" key={item.label}>
                 {item.label}
-                <MaskIcon
-                  src={item.icon}
-                  color={item.color}
-                  size={18}
-                  className="marquee-icon"
-                />
+                <item.icon color={item.color} />
               </span>
             ))}
           </div>
@@ -254,7 +259,7 @@ function About() {
     <section className="content-section about" id="about">
       <div className="about-grid">
         <div>
-          <SectionLabel>// ABOUT THE CHAPTER</SectionLabel>
+          <SectionLabel tone="red">// ABOUT THE CHAPTER</SectionLabel>
           <h2>a home for builders on campus.</h2>
           <div className="section-wave wave-red" />
           <p className="body-copy">
@@ -268,10 +273,9 @@ function About() {
         <div className="principles">
           {aboutPrinciples.map((principle) => (
             <div key={principle.title}>
-              <MaskIcon
-                src={principle.icon}
+              <principle.icon
                 color={principle.color}
-                size={30}
+                style={{ width: 30, height: 30 }}
               />
               <div>
                 <h3>{principle.title}</h3>
@@ -473,8 +477,15 @@ function JoinSection() {
         Join, show up, and start shipping things.
       </p>
       <div className="join-actions">
-        <a className="button button-primary" href="#join">
-          <span aria-hidden>＋</span> Become a member
+        <a
+          className="button button-primary"
+          href="#join"
+          style={{ backgroundColor: "var(--yellow)" }}
+        >
+          <span aria-hidden>
+            <GroupAdd style={{ width: 20, height: 20 }} />
+          </span>
+          Become a member
         </a>
         <a className="button button-outline" href="#events">
           Join our next event
@@ -585,11 +596,10 @@ function Header() {
           <Image
             src={logoAsset}
             alt="GDG on Campus · VIT Chennai"
-            width={184}
-            height={24}
+            width={300}
+            height={27}
             priority
           />
-          <span>GDG VIT Chennai</span>
         </a>
 
         <nav aria-label="Primary navigation">
@@ -627,7 +637,7 @@ export default function Home() {
         <MaskIcon
           src="/assets/sparkle-bolt.svg"
           color="#8ab4f8"
-          size={22}
+          size={50}
           className="hero-spark hero-spark-blue"
         />
         <MaskIcon
@@ -666,7 +676,16 @@ export default function Home() {
 
           <div className="hero-actions">
             <a className="button button-primary" href="#join">
-              <span aria-hidden>↗</span> Become a GDG Member
+              <span aria-hidden>
+                <Image
+                  src={rocketAsset}
+                  alt=""
+                  width={20}
+                  height={20}
+                  className="hero-rocket"
+                />
+              </span>
+              Become a GDG Member
             </a>
             <a className="button button-outline" href="#departments">
               Explore departments
