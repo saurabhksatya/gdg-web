@@ -91,12 +91,6 @@ main {
   letter-spacing: -0.16px;
 }
 
-.brand img {
-  width: 112px;
-  height: auto;
-  object-fit: contain;
-}
-
 nav {
   display: flex;
   align-items: center;
@@ -353,7 +347,7 @@ h1 {
 }
 
 .hero-spark-blue {
-  left: 6.5%;
+  left: 10%;
   top: 350px;
   transform: rotate(14deg);
 }
@@ -383,8 +377,8 @@ h1 {
 }
 
 .hero-sticker-right {
-  right: 25%;
-  top: 336px;
+  right: 27%;
+  top: 420px;
   color: var(--blue);
   transform: rotate(5deg);
 }
@@ -458,6 +452,10 @@ h1 {
   color: var(--green);
 }
 
+.section-label-red {
+  color: var(--red);
+}
+
 h2 {
   margin: 0;
   color: var(--paper);
@@ -491,7 +489,7 @@ h2 {
 }
 
 .wave-red {
-  background: var(--yellow);
+  background: var(--red);
   -webkit-mask: url("/assets/underline-about.svg") center / 100% 100% no-repeat;
   mask: url("/assets/underline-about.svg") center / 100% 100% no-repeat;
 }
@@ -1115,10 +1113,6 @@ footer {
 
   .nav-shell {
     width: calc(100% - 24px);
-  }
-
-  .brand img {
-    width: 96px;
   }
 
   .hero-inner {
