@@ -1310,6 +1310,13 @@ footer {
   font-size: 13px;
 }
 
+@media (max-width: 1280px) {
+  .department-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+}
+
 @media (max-width: 800px) {
   nav {
     display: none;
@@ -1456,13 +1463,7 @@ footer {
 
   .department-list {
     grid-template-columns: 1fr;
-    gap: 18px;
-  }
-}
-
-@media (max-width: 1280px) {
-  .department-list {
-    grid-template-columns: 1fr 1fr;
+    justify-items: center;
     gap: 18px;
   }
 }
