@@ -8,6 +8,18 @@ import {
   Diversity3,
   Public,
   GroupAdd,
+  ManageAccounts,
+  Trophy,
+  Campaign,
+  ConnectWithoutContact,
+  DesignServices,
+  Palette,
+  Language,
+  Mobile2,
+  SportsEsports,
+  Analytics,
+  Hub,
+  Link,
 } from "@material-symbols-svg/react/outlined";
 const logoAsset = "/assets/gdg-logo.svg";
 const markAsset = "/assets/gdg-mark.svg";
@@ -66,77 +78,113 @@ const coreBoard = [
 
 const departments = [
   {
-    icon: "/assets/icon-vector-2.svg",
+    icon: ManageAccounts,
     tone: "#8ab4f8",
     name: "Management",
     description: "Operations, logistics and the people who make events happen.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
   {
-    icon: "/assets/icon-vector-7.svg",
-    tone: "#ff7a6b",
-    name: "Web Dev",
-    description: "Modern frontends, full-stack apps and the open web.",
+    icon: Campaign,
+    tone: "#FF7A6B",
+    name: "Social Media & Marketing",
+    description: "Our voice online — reels, posts & campaigns.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
   {
-    icon: "/assets/icon-vector-3.svg",
-    tone: "#ffd45e",
+    icon: ConnectWithoutContact,
+    tone: "#FFD45E",
+    name: "Outreach",
+    description: "Partnerships, sponsors & sister communities.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+      2: { name: "Name", role: "Lead", image: "" },
+    },
+  },
+  {
+    icon: DesignServices,
+    tone: "#FF7A6B",
     name: "UI / UX",
-    description: "Research, wireframes and interfaces people love to use.",
+    description: "Research, wireframes & interfaces people love.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
   {
-    icon: "/assets/icon-vector-4.svg",
-    tone: "#6ee7a0",
+    icon: Palette,
+    tone: "#FFD45E",
     name: "Design",
-    description: "Branding, posters and the visual identity of GDG VITC.",
+    description: "Branding, posters & the visual identity of GDG VITC.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
   {
-    icon: "/assets/icon-vector-5.svg",
-    tone: "#8ab4f8",
+    icon: Language,
+    tone: "#8AB4F8",
+    name: "Web Dev",
+    description: "Modern frontends, full-stack apps & the open web.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
+  },
+  {
+    icon: Mobile2,
+    tone: "#6EE7A0",
     name: "App Dev",
-    description: "Android and cross-platform apps with Kotlin and Flutter.",
+    description: "Android & cross-platform apps with Kotlin & Flutter.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
   {
-    icon: "/assets/icon-vector-6.svg",
-    tone: "#ff7a6b",
+    icon: SportsEsports,
+    tone: "#FF7A6B",
     name: "Game Dev",
-    description: "Building games with Unity, Godot and the web.",
+    description: "Building games with Unity, Godot & the web.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
   {
-    icon: "/assets/icon-vector-1.svg",
-    tone: "#ffd45e",
-    name: "Competitive Programming",
-    description: "DSA, contests and cracking that dream internship.",
+    icon: Analytics,
+    tone: "#8AB4F8",
+    name: "Data Science",
+    description: "ML, analytics & making sense of messy data.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
   {
-    icon: "/assets/icon-vector-7.svg",
-    tone: "#6ee7a0",
-    name: "PR & Outreach",
-    description: "Stories, partnerships and taking the community further.",
-  },
-  {
-    icon: "/assets/icon-vector-2.svg",
-    tone: "#8ab4f8",
-    name: "Cloud",
-    description: "Deployment, infrastructure and practical platform skills.",
-  },
-  {
-    icon: "/assets/icon-vector-3.svg",
-    tone: "#ff7a6b",
-    name: "AI / ML",
-    description: "Models, experiments and useful ways to ship with AI.",
-  },
-  {
-    icon: "/assets/icon-vector-4.svg",
-    tone: "#ffd45e",
-    name: "Content",
-    description:
-      "Writing, motion and making the work look as good as it feels.",
-  },
-  {
-    icon: "/assets/icon-vector-5.svg",
-    tone: "#6ee7a0",
+    icon: Hub,
+    tone: "#6EE7A0",
     name: "Open Source",
-    description: "Contributions, maintainer habits and real collaboration.",
+    description: "Contributing to & maintaining open projects.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
+  },
+  {
+    icon: Link,
+    tone: "#FFD45E",
+    name: "Blockchain",
+    description: "Web3, smart contracts & decentralized apps.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
+  },
+  {
+    icon: Trophy,
+    tone: "#6EE7A0",
+    name: "Competitive Programming",
+    description: "DSA, contests & cracking that dream internship.",
+    leads: {
+      1: { name: "Name", role: "Lead", image: "" },
+    },
   },
 ] as const;
 
@@ -365,23 +413,51 @@ function Departments() {
         </p>
         <div className="department-list">
           {departments.map((department, index) => (
-            <div className="department-row" key={`${department.name}-${index}`}>
-              <MaskIcon
-                src={department.icon}
-                color={department.tone}
-                size={28}
-                className="department-icon"
-              />
-              <div>
-                <h3>{department.name}</h3>
-                <p>{department.description}</p>
+            <div
+              className="department-block"
+              key={`${department.name}-${index}`}
+              style={{ "--tone-color": department.tone } as React.CSSProperties}
+            >
+              <div className="department-container">
+                <department.icon color={department.tone} size={"44px"} />
+                <div className="department-text-container">
+                  <h3>{department.name}</h3>
+                </div>
+                <div className="department-description">
+                  <p>{department.description}</p>
+                </div>
               </div>
-              <div className="lead-avatar">Lead</div>
-              <span className="lead-name">
-                Name
-                <br />
-                <small>Lead</small>
-              </span>
+              <div className="department-big-icon">
+                <department.icon
+                  color={department.tone}
+                  size={"170px"}
+                  style={{ zIndex: 0 }}
+                />
+              </div>
+              <div className="department-overlay">
+                <h3 style={{ color: department.tone }}>LEAD</h3>
+                <div>
+                  {Object.entries(department.leads).map(
+                    ([key, lead], index) => (
+                      <div key={index}>
+                        <div
+                          style={{
+                            height: "62px",
+                            width: "62px",
+                            borderRadius: "50%",
+                            borderColor: department.tone,
+                            borderWidth: "2px",
+                            borderStyle: "solid",
+                          }}
+                        ></div>
+                        {lead.name}
+                        <br />
+                        {lead.role}
+                      </div>
+                    ),
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
